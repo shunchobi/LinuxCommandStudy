@@ -88,6 +88,7 @@ class ReviewCommandController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Review_Command_List::where('id_review', $id)->delete();
+        // Review_Command_List::delete('id_review', $id)->delete();
     }
 }

@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ReviewCommandController;
 use App\Http\Controllers\AllCommandController;
 use App\Http\Controllers\topPageController;
+use App\Http\Controllers\RandomQuizController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -27,4 +29,6 @@ use App\Http\Controllers\topPageController;
 Route::resource('allcommand', AllCommandController::class);
 Route::resource('reviewcommand', ReviewCommandController::class);
 Route::resource('top', topPageController::class);
+Route::resource('quiz', RandomQuizController::class);
+
 

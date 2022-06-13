@@ -6,8 +6,11 @@
   Thank you for getting in touch! 
 </div>
 
+<a href="{{ route('quiz.index', ['all_or_review' => 'all']) }}">Random Quiz</a>
+
 @foreach ($allCommands as $key => $value)
     <form method="post">
+    @csrf
         <button class="button" type="button" data-id="{{$allCommands[$key]['id']}}" name="name"> 追加 </button>
         {{ $allCommands[$key]['id'].$allCommands[$key]['command'].$allCommands[$key]['howtouse'].$allCommands[$key]['process']}}
     </form>
