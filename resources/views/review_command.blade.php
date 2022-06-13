@@ -2,7 +2,7 @@
 
 @section('content')
 
-<button type="button" href="{{ url('quiz') }}"> Random Quiz</button>
+<a href="{{ route('quiz.index', ['all_or_review' => 'review']) }}"> Random Quiz </a>
 
 @foreach ($reviewCommands as $review_key => $review_value)
     @foreach($allCommands as $all_key => $all_value)
