@@ -13,8 +13,17 @@
     @endforeach
 @endforeach
 
+{{ 
+    $array1 = [1,2,3,4,5];
+    $array2 = [6,7,8,9,10];
 
-$huhuhuhu
+    foreach($array1 as $value1){
+        foreach($array2 as $value2) {
+            return $value1.$value2;
+        }
+    }
+}}
+
 
 
 

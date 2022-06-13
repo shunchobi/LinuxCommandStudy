@@ -1,0 +1,2 @@
+[safe]
+    directory = %(prefix)\\\wsl.localhost\Ubuntu\home\shun\develop\LinuxCommandStudy
