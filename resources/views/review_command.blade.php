@@ -2,6 +2,9 @@
 
 @section('content')
 
+@if (count($reviewCommands) === 0)
+<h1 id="empty"> Empty Review Command </h1>
+@else
 <a href="{{ route('quiz.index', ['all_or_review' => 'review']) }}"> Random Quiz </a>
 
 @foreach ($reviewCommands as $review_key => $review_value)
@@ -18,6 +21,7 @@
         @endif
     @endforeach
 @endforeach
+@endif
 
 @endsection
 

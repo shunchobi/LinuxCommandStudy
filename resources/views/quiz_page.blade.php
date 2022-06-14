@@ -2,6 +2,10 @@
 
 @section('content')
 
+@if ( $all_or_review === "empty" )
+<h1 class="empty"> Empty Review Command</h1>
+
+@else
 <div>
     <div class="process-text"> {{ $command_info['process']; }}</div>
     <div id="answer-text"> answer </div>
@@ -22,9 +26,6 @@
     <button type="submit" class="show-answer-btn"> Show Answer </button>
     <button type="submit" class="next-quiz-btn"> Next Quiz </button> 
 </div>
-
-
-<!-- <script> changeText(); </script> -->
 
 
 
@@ -124,7 +125,7 @@ $("#{{$all_or_review}}").click(function(){
 });
 
 </script>
-
+@endif
 @endsection
 
 

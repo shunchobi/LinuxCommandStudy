@@ -19,7 +19,11 @@ class RandomQuizController extends Controller
         }
         elseif ($all_or_review === 'review'){
             $review_commandList = Review_Command_List::get();
-            $randomNum = random_int(0, count($review_commandList) - 1);
+            $count_review_commandList = count($review_commandList);
+            if ($count_review_commandList == 0){
+                return view('quiz_page', ['command_info' => $command_info, 'all_or_review' => "empty"]);
+            }
+            $randomNum = random_int(0, $count_review_commandList - 1);
             $targetId = $review_commandList[$randomNum]['id_review'];
             $command_info = $all_commandList[$targetId-1];
         }

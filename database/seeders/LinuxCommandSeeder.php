@@ -196,14 +196,6 @@ class LinuxCommandSeeder extends Seeder
         All_Command_List::firstOrCreate([
             'id' => Num::getSortedNum(),
             'iscommand' => true,
-            'command' => 'more',
-            'howtouse' => 'more file',
-            'process' => 'ファイルをページ単位で閲覧する',
-        ]);
-
-        All_Command_List::firstOrCreate([
-            'id' => Num::getSortedNum(),
-            'iscommand' => true,
             'command' => 'useradd',
             'howtouse' => 'useradd name_user',
             'process' => 'ユーザーを新規作成する',
