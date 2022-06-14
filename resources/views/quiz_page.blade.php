@@ -8,8 +8,12 @@
     <div id="result-text"> reue or false </div>
 </div>
 
-<div>
+<form method="post">
+    @csrf
     <button type="button" id="{{$all_or_review}}"> add or delete </button>
+</form>
+
+<div>
     <input type="text" name="answer" id="player-text"> 
     <button class="check-answer-btn"> Enter </button>
 </div>
@@ -30,8 +34,9 @@ $(document).ready(function(){
     changeText();
 });
 
-
-//class="next-quiz-btn ボタンが押されたらページをリロードする。
+//
+// リロード時に表示したくない文字を非表示にする
+//
 function changeText(){
     var add_or_delete = "";
     if("{{$all_or_review}}" == "all"){
@@ -42,17 +47,27 @@ function changeText(){
     }
     document.getElementById("{{$all_or_review}}").innerText = add_or_delete;
     document.getElementById("answer-text").innerText = "";
+    document.getElementById("result-text").innerText = "";
 }
 
+//
+// 答えを見るボタン
+//
 $(".show-answer-btn").click(function(){
     document.getElementById("answer-text").innerText = "{{ $command_info['command']; }}";
 
 });
 
+//
+// 次のクイズボタン
+//
 $(".next-quiz-btn").click(function(){
     location.reload();
 });
 
+//
+// 答え合わせボタン
+//
 $(".check-answer-btn").click(function(){
     const result = "{{ $command_info['command']; }}";
     const player_result = $("#player-text").val();
@@ -68,15 +83,44 @@ $(".check-answer-btn").click(function(){
     console.log(player_result);
 });
 
-$(".{{$all_or_review}}").click(function(){
-    const target_id = {{ $command_info['command']; }};
+//
+// クイズとして表示されているコマンドを、review command listに追加または削除するボタン
+//
+$("#{{$all_or_review}}").click(function(){
+    const target_id = "{{ $command_info['id']; }}";
 
+    // add the command to review list
     if("{{$all_or_review}}" == "all"){
-        add_or_delete = "add to review list";
+        $.ajax({
+        url: "reviewcommand",
+        type:"POST",
+        data:{
+            "_token": "{{ csrf_token() }}",
+            "id": target_id
+        },
+        success:function(response){
+            console.log(response);
+        },
+    });
     }
+    
+    // delete the command from review list
     else if("{{$all_or_review}}" == "review"){
-        add_or_delete = "delete from review list";
-    }
+        $.ajax({
+            url: "reviewcommand/"+target_id,
+            type:"delete",
+            data:{
+                "_token": "{{ csrf_token() }}",
+            },
+            success: function(response){
+                console.log(response);
+                console.log("delete"+target_id+"from review");
+            },
+            error: function (response) {
+                console.log('Error:', response);             
+            }
+        });
+    }    
 });
 
 </script>

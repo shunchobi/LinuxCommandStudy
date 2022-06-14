@@ -9,7 +9,7 @@
         @if ($reviewCommands[$review_key]['id_review'] === $allCommands[$all_key]['id'])
             <form method="post">
             @csrf
-                <div id="command-{{$reviewCommands[$review_key]['id_review']}}">
+                <div class="command-{{$reviewCommands[$review_key]['id_review']}}">
                     <button class="button" type="button" data-id="{{$reviewCommands[$review_key]['id_review']}}"> 削除</button>
                     {{ $allCommands[$all_key]['command'].$allCommands[$all_key]['howtouse'].$allCommands[$all_key]['process'] }}
                 </div>
@@ -40,7 +40,7 @@ window.addEventListener('DOMContentLoaded', function () {
             },
             success: function(response){
                 console.log(response);
-                $("#command-"+targetId).fadeOut();
+                $(".command-"+targetId).fadeOut();
             },
             error: function (response) {
                 console.log('Error:', response);             
