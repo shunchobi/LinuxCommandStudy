@@ -68,6 +68,17 @@ $(".check-answer-btn").click(function(){
     console.log(player_result);
 });
 
+$(".{{$all_or_review}}").click(function(){
+    const target_id = {{ $command_info['command']; }};
+
+    if("{{$all_or_review}}" == "all"){
+        add_or_delete = "add to review list";
+    }
+    else if("{{$all_or_review}}" == "review"){
+        add_or_delete = "delete from review list";
+    }
+});
+
 </script>
 
 @endsection
