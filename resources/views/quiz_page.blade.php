@@ -19,7 +19,7 @@
 
 <div>
     <input type="text" name="answer" id="player-text"> 
-    <button class="check-answer-btn"> Enter </button>
+    <button class="check-answer-btn"> Enter! </button>
 </div>
 
 <div>
